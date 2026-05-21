@@ -1,0 +1,6 @@
+_reference_zip/
+*.zip
+*.crx
+*.pem
+.DS_Store
+Thumbs.db

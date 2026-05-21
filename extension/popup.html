@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Auth Bridge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">OpenAI Web Session</p>
+        <h1>Codex Auth Bridge</h1>
+      </div>
+      <span class="badge">MV3</span>
+    </header>
+
+    <section class="panel">
+      <p class="summary">
+        读取当前浏览器的 ChatGPT 登录态，生成 Codex CLI 可用的 <code>auth.json</code>。
+      </p>
+
+      <button id="generateButton" class="primary" type="button">
+        <span class="buttonIcon" aria-hidden="true">↧</span>
+        <span>生成并复制 auth.json</span>
+      </button>
+
+      <details class="manualInput">
+        <summary>手动输入生成</summary>
+        <label class="field">
+          <span>session JSON / auth.json / accessToken</span>
+          <textarea id="manualInput" spellcheck="false" placeholder="只在本机处理，不会上传。"></textarea>
+        </label>
+        <label class="field">
+          <span>account_id（可选，JWT 里解析不到时填写）</span>
+          <input id="manualAccountId" type="text" autocomplete="off" spellcheck="false" placeholder="例如 cd5c0109-...">
+        </label>
+        <button id="manualGenerateButton" class="secondary" type="button">
+          <span>从手动输入生成并复制</span>
+        </button>
+      </details>
+
+      <div id="status" class="status neutral" role="status" aria-live="polite">
+        请先确认这个浏览器已经登录 chatgpt.com。
+      </div>
+    </section>
+
+    <section id="detailsPanel" class="details" hidden>
+      <div class="detailGrid">
+        <div>
+          <span class="label">账号</span>
+          <strong id="emailValue">未知</strong>
+        </div>
+        <div>
+          <span class="label">套餐</span>
+          <strong id="planValue">未知</strong>
+        </div>
+        <div>
+          <span class="label">Token 过期</span>
+          <strong id="tokenExpiryValue">未知</strong>
+        </div>
+      </div>
+
+      <details class="preview">
+        <summary>查看生成内容</summary>
+        <pre id="previewContent"></pre>
+      </details>
+    </section>
+  </main>
+
+  <script src="auth_bridge.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

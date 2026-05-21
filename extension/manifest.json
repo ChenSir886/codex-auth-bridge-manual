@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Codex Auth Bridge",
+  "version": "1.0.0",
+  "description": "从已登录的 ChatGPT 网页会话生成 Codex CLI auth.json，并复制到剪贴板。",
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*"
+  ],
+  "action": {
+    "default_title": "Codex Auth Bridge",
+    "default_popup": "popup.html"
+  }
+}
